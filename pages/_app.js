@@ -1,25 +1,24 @@
 import Script from 'next/script';
 import { ThemeProvider } from 'next-themes';
 
-// eslint-disable-next-line no-unused-vars
-// import { NFTProvider } from "../context/NFTContext";
+import { NFTProvider } from '../context/NFTContext';
 import { Footer, Navbar } from '../components';
 import '../styles/globals.css';
 
 const Marketplace = ({ Component, pageProps }) => (
-  // <NFTProvider>
-  <ThemeProvider attribute="class">
-    <div className="dark:bg-nft-dark bg-white min-h-screen">
-      <Navbar />
-      <div className="pt-65">
-        <Component {...pageProps} />
+  <NFTProvider>
+    <ThemeProvider attribute="class">
+      <div className="dark:bg-nft-dark bg-white min-h-screen">
+        <Navbar />
+        <div className="pt-65">
+          <Component {...pageProps} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
 
-    <Script src="https://kit.fontawesome.com/99538361d6.js" crossOrigin="anonymous" />
-  </ThemeProvider>
-  // </NFTProvider>
+      <Script src="https://kit.fontawesome.com/99538361d6.js" crossOrigin="anonymous" />
+    </ThemeProvider>
+  </NFTProvider>
 );
 
 export default Marketplace;

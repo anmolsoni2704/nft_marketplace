@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
 // eslint-disable-next-line import/no-cycle
 import { Button } from '.';
@@ -32,9 +33,9 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 };
 
 const ButtonGroup = ({ setActive, router }) => {
-  const hasConnected = true;
+  const { connectWallet, currentAccount } = useContext(NFTContext);
 
-  return hasConnected ? (
+  return currentAccount ? (
     <Button
       btnName="Create"
       classStyles="mx-2 rounded-xl"
@@ -48,7 +49,7 @@ const ButtonGroup = ({ setActive, router }) => {
     <Button
       btnName="Connect"
       classStyles="mx-2 rounded-xl"
-      handleClick={() => {}}
+      handleClick={connectWallet}
     />
   );
 };
